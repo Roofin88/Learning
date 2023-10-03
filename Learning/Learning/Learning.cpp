@@ -4,6 +4,8 @@
 #include <string>
 #include <algorithm>
 #include <cinttypes>
+#include <cmath>
+#include <numeric>
 
 using namespace std;
 
@@ -257,4 +259,130 @@ int sequenceSum(int start, int ending, int step)
         return result;
     }
     else return 0;
+}
+
+//Leap Year
+bool leapYear(int year)
+{
+    if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)
+        return true;
+    else return false;
+}
+
+
+//Sum of positive
+int positive_sum(const vector<int> arr)
+{
+    vector <int>posVector = {};
+    for (int i = 0; i < arr.size(); i++)
+    {
+        if (arr[i] > 0)
+        {
+            posVector.push_back(arr[i]);
+        }
+    }
+    for (int n : posVector)
+        cout << n << endl;
+    int sum_of_elements = accumulate(posVector.begin(), posVector.end(), 0);
+    return sum_of_elements;
+}
+
+//Reversed Strings
+#include <string>
+#include <algorithm>
+using namespace std;
+
+string reverseString(string str)
+{
+    string temp = str;
+    reverse(temp.begin(), temp.end());
+    return temp;
+}
+
+//Count by X
+vector<int> countBy(int x, int n)
+{
+    vector<int>result = {};
+    for (int i = 1; i <= n; i++)
+    {
+        result.push_back(x * i);
+    }
+    for (int n : result)
+        cout << n << endl;
+
+    return result;
+}
+
+//Greatest common divisor
+long long mygcd(long long a, long long b)
+{
+    while (a != b)
+    {
+        if (a > b)
+            a -= b;
+        else
+            b -= a;
+    }
+    return a;
+}
+
+//Grasshopper - Summation
+int summation(int num)
+{
+    int sum = 1;
+    int temp = 0;
+    for (int i = 0; sum <= num; i++)
+    {
+        temp += sum;
+        sum += 1;
+    }
+    return temp;
+}
+
+//Largest Square Inside A Circle
+int area_largest_square(int r)
+{
+    return 2 * (r * r);
+}
+
+//Perimeter sequence
+int perimeter_sequence(int a, int n) {
+    return (a * 4) * n;
+}
+
+//Speed Control
+
+class GpsSpeed
+{
+public:
+    static int gps(int s, vector<double>& x);
+};
+
+int GpsSpeed::gps(int s, vector<double>& x)
+{
+    if (x.size() <= 1)
+    {
+        return 0;
+    }
+
+    double maxAverageSpeed = 0;
+
+    for (int i = 0; i < (x.size() - 1); i++)
+    {
+        double deltaDistance = x[i + 1] - x[i];
+        double averageSpeed = (3600 * deltaDistance) / s;
+
+        if (averageSpeed > maxAverageSpeed)
+        {
+            maxAverageSpeed = averageSpeed;
+        }
+    }
+    return floor(maxAverageSpeed);
+}
+
+
+int main()
+{
+   
+    return 0;
 }

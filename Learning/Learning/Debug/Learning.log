@@ -1,0 +1,5 @@
+﻿  Learning.cpp
+D:\Git\Learning\Learning\Learning\Learning.cpp(52,23): warning C4018: '<': signed/unsigned mismatch
+D:\Git\Learning\Learning\Learning\Learning.cpp(92,27): warning C4018: '<': signed/unsigned mismatch
+D:\Git\Learning\Learning\Learning\Learning.cpp(219,42): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  Learning.vcxproj -> D:\Git\Learning\Learning\Debug\Learning.exe
