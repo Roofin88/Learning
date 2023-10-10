@@ -7,6 +7,9 @@
 #include <cmath>
 #include <numeric>
 
+
+
+
 using namespace std;
 
 //Multiply
@@ -269,7 +272,6 @@ bool leapYear(int year)
     else return false;
 }
 
-
 //Sum of positive
 int positive_sum(const vector<int> arr)
 {
@@ -288,10 +290,6 @@ int positive_sum(const vector<int> arr)
 }
 
 //Reversed Strings
-#include <string>
-#include <algorithm>
-using namespace std;
-
 string reverseString(string str)
 {
     string temp = str;
@@ -351,7 +349,6 @@ int perimeter_sequence(int a, int n) {
 }
 
 //Speed Control
-
 class GpsSpeed
 {
 public:
@@ -380,9 +377,446 @@ int GpsSpeed::gps(int s, vector<double>& x)
     return floor(maxAverageSpeed);
 }
 
+//Who likes it?
+string likes(const vector<string>& names)
+{
+    string result{};
+    string message{ "no one likes this" };
+    string lenForFour = to_string(names.size() - 2);
+
+    if (names.size() == 0)
+        return message;
+    else if (names.size() == 1)
+    {
+        result = { names[0] + " likes this" };
+        return result;
+    }
+    else if (names.size() == 2)
+    {
+        result = { names[0] + " and " + names[1] + " like this" };
+        return result;
+    }
+    else if (names.size() == 3)
+    {
+        result = { names[0] + ", " + names[1] + " and " + names[2] + " like this" };
+        return result;
+    }
+    else if (names.size() >= 4)
+    {
+        result = { names[0] + ", " + names[1] + " and " + lenForFour + " others like this" };
+        return result;
+    }
+    else
+        return 0;
+}
+
+//Multiples of 3 or 5
+int solution(int number) //multiply 3 and 5
+{
+    int mult1 = 3;
+    int mult2 = 5;
+    int temp = 0;
+    int num = number - 1;
+    if (number < mult1 || number < 0)
+        return 0;
+    while (num != 0)
+    {
+        if ((num % mult1) == 0 || (num % mult2) == 0)
+        {
+            temp += num;
+            num--;
+        }
+        else
+            num--;
+    }
+    return temp;
+}
+
+//Create Phone Number
+string createPhoneNumber(const int arr[10]) {
+    string result = "";
+    result = { "(" + (to_string(arr[0])) + (to_string(arr[1])) + (to_string(arr[2])) + ") " + (to_string(arr[3])) + (to_string(arr[4])) + (to_string(arr[5])) + '-' + (to_string(arr[6])) + (to_string(arr[7])) + (to_string(arr[8])) + (to_string(arr[9])) };
+    return result;
+}
+
+//FindOdd
+int findOdd(const vector<int>& numbers) 
+{
+    int counter = 0;
+    int maxCounter = 0;
+    int result = 0;
+
+    for (int i = 0; i < numbers.size(); i++)
+    {
+        counter = count(numbers.begin(), numbers.end(), numbers[i]);
+        if ((counter % 2) != 0)
+        {
+            if (counter > maxCounter)
+            {
+                maxCounter = counter;
+                result = numbers[i];
+            }
+        }
+    }
+    return result;
+}
+
+//DigitalRoot
+int digital_root(int n) 
+{
+    int remainder = n;
+    int sum = 0;
+    int bufRem = remainder;
+    int counterOne = 0;
+    int counterTwo = 0;
+    int counterThree = 0;
+    int digitalRoot = 0;
+    int digit = 0;
+    int temp = 0;
+    int temp2 = 0;
+    int sum2 = 0;
+
+    while (remainder != 0)
+    {
+        remainder = remainder / 10;
+        counterOne++;
+    }
+    cout << counterOne << endl;
+
+    for (int i = 0; i < counterOne; i++)
+    {
+        digit = bufRem % 10;
+        sum += digit;
+        bufRem /= 10;
+        counterTwo++;
+    }
+    cout << sum << endl;
+    cout << counterTwo << endl;
+
+    for (int j = 0; j < counterTwo; j++)
+    {
+        temp = sum % 10;
+        sum2 = sum2 + temp;
+        sum /= 10;
+        counterThree++;
+    }
+    cout << "Sum2: " << sum2 << endl;
+    for (int k = 0; k < counterThree; k++)
+    {
+        temp2 = sum2 % 10;
+        digitalRoot = digitalRoot + temp2;
+        sum2 /= 10;
+    }
+    return digitalRoot;
+}
+
+//Duplicate_encoder !!!!!NOT FINISHED!!!!!!
+/*string duplicate_encoder(const string& word)
+{
+    string inputWord = word;
+    string resultWord = "";
+    size_t secondChar = 0;
+    size_t lastChar = 0;
+    size_t firstChar = 0;
+    char charForSearch = ' ';
+
+    transform(inputWord.begin(), inputWord.end(), inputWord.begin(),
+        [](unsigned char c) { return tolower(c); });
+
+    for (int i = 0; i < inputWord.length(); i++)
+    {
+        charForSearch = inputWord[i];
+        secondChar = inputWord.find(charForSearch, i + 1);
+        if (inputWord[i] == inputWord[secondChar])
+        {
+            inputWord[i] = ')';
+        }
+        else
+            inputWord[i] = '(';
+    }
+
+    for (int i = 0; i < inputWord.length(); i++)
+    {
+        firstChar = inputWord.find(inputWord[i]);
+        secondChar = inputWord.find(inputWord[i], i + 1);
+        if (firstChar != string::npos && secondChar != string::npos)
+        {
+            resultWord.push_back(')');
+        }
+
+        if (secondChar == inputWord.length() - 1)
+        {
+            lastChar = secondChar;
+        }
+        if (i == inputWord.length() - 1 && lastChar != 0)
+        {
+            resultWord.push_back(')');
+            break;
+        }
+        if (secondChar != string::npos)
+        {
+            resultWord.push_back(')');
+        }
+        else
+            resultWord.push_back('(');
+        cout << inputWord[i] << endl;
+        cout << secondChar << endl;
+        cout << resultWord << endl;
+        cout << lastChar << "\n\n";
+    }
+  
+    return inputWord;
+}*/
+
+//Find The Parity Outlier
+int FindOutlier(vector<int> arr)
+{
+    size_t evenCounter = 0;
+    size_t oddCounter = 0;
+    int result = 0;
+
+    for (int n = 0; n < arr.size(); n++)
+    {
+        if (arr[n] % 2 == 0)
+        {
+            evenCounter++;
+        }
+        else
+            oddCounter++;
+    }
+
+    for (int j = 0; j < arr.size(); j++)
+    {
+        if (arr[j] % 2 == 0 && evenCounter == 1)
+            result = arr[j];
+        else if (arr[j] % 2 != 0 && oddCounter == 1)
+            result = arr[j];
+    }
+
+    return result;
+}
+
+//Replace With Alphabet Position !!!!NOT FINISHED!!!!
+string alphabet_position(const string& text)
+{
+    string inputText = text;
+    string resultSeq = "";
+    transform(inputText.begin(), inputText.end(), inputText.begin(),
+        [](unsigned char c) { return std::tolower(c); });
+    
+    inputText.erase(remove(inputText.begin(), inputText.end(), ' '), inputText.end());
+    inputText.erase(remove(inputText.begin(), inputText.end(), '\''), inputText.end());
+    
+    for (int i = 0; i < inputText.length(); i++)
+    {
+        switch (inputText[i])
+        {
+        case 'a':
+            resultSeq.append(" 1");
+            break;
+        case 'b':
+            resultSeq.append(" 2");
+            break;
+        case 'c':
+            resultSeq.append(" 3");
+            break;
+        case 'd':
+            resultSeq.append(" 4");
+            break;
+        case 'e':
+            resultSeq.append(" 5");
+            break;
+        case 'f':
+            resultSeq.append(" 6");
+            break;
+        case 'g':
+            resultSeq.append(" 7");
+            break;
+        case 'h':
+            resultSeq.append(" 8");
+            break;
+        case 'i':
+            resultSeq.append(" 9");
+            break;
+        case 'j':
+            resultSeq.append(" 10");
+            break;
+        case 'k':
+            resultSeq.append(" 11");
+            break;
+        case 'l':
+            resultSeq.append(" 12");
+            break;
+        case 'm':
+            resultSeq.append(" 13");
+            break;
+        case 'n':
+            resultSeq.append(" 14");
+            break;
+        case 'o':
+            resultSeq.append(" 15");
+            break;
+        case 'p':
+            resultSeq.append(" 16");
+            break;
+        case 'q':
+            resultSeq.append(" 17");
+            break;
+        case 'r':
+            resultSeq.append(" 18");
+            break;
+        case 's':
+            resultSeq.append(" 19");
+            break;
+        case 't':
+            resultSeq.append(" 20");
+            break;
+        case 'u':
+            resultSeq.append(" 21");
+            break;
+        case 'v':
+            resultSeq.append(" 22");
+            break;
+        case 'w':
+            resultSeq.append(" 23");
+            break;
+        case 'x':
+            resultSeq.append(" 24");
+            break;
+        case 'y':
+            resultSeq.append(" 25");
+            break;
+        case 'z':
+            resultSeq.append(" 26");
+            break;
+ 
+        }
+    }
+    auto start = resultSeq.find_first_not_of(' ');
+    auto end = resultSeq.find_last_not_of(' ');
+    string trimmedString = "";
+    trimmedString = resultSeq.substr(start, (end - start) + 1);
+    return trimmedString;
+}
+
+//Take a Ten Minutes Walk
+bool isValidWalk(vector<char> walk)
+{
+    int axisX = 0;
+    int axisY = 0;
+
+    for (auto i = 0; i < walk.size(); i++)
+    {
+        if (walk.size() == 10)
+        {
+            switch (walk[i])
+            {
+            case 'n':
+                axisY++;
+                break;
+            case 's':
+                axisY--;
+                break;
+            case 'e':
+                axisX++;
+                break;
+            case 'w':
+                axisX--;
+                break;
+            default:
+                return false;
+            }
+        }
+        else
+            return false;
+    }
+    if (axisX == 0 && axisY == 0)
+        return true;
+    else
+        return false;
+}
+
+//Persistent Bugger
+int persistence(long long n)
+{
+    long long inputNum = n;
+    cout << inputNum << endl;
+
+    long long tempNum = 1;
+    int counter = 0;
+    if (inputNum / 10 == 0)
+    {
+        return 0;
+    }
+    else
+    {
+        do
+        {
+            int divider = 10;
+            int currentDigit = 0;
+            tempNum = 1;
+            while (inputNum > 0)
+            {
+                currentDigit = inputNum % divider;
+                inputNum = inputNum - currentDigit;
+                currentDigit = currentDigit / (divider / 10);
+                tempNum *= currentDigit;
+                divider = divider * 10;
+            }
+            inputNum = tempNum;
+            if (tempNum == 10)
+            {
+                counter++;
+            }
+            else if (tempNum == 0 && counter != 0)
+            {
+                counter++;
+            }
+            else if (tempNum == 0)
+            {
+                counter = 1;
+                break;
+            }
+            else
+                counter++;
+
+        } while (tempNum > 9);
+    }
+    return counter;
+}
+
+//Convert string to camel case
+string to_camel_case(string text)
+{
+    string inputText = text;
+    string separators{ "-_" };
+    size_t startPos{ inputText.find_first_not_of(separators) };
+
+    while (startPos != string::npos)
+    {
+        if (startPos != 0)
+        {
+            inputText[startPos] = toupper(inputText[startPos]);
+            cout << inputText[startPos] << endl;
+        }
+        size_t endPos = inputText.find_first_of(separators, startPos + 1);
+        if (endPos == string::npos)
+        {
+            endPos = inputText.length();
+        }
+        startPos = inputText.find_first_not_of(separators, endPos + 1);
+
+    }
+
+    while (inputText.find_first_of(separators) != string::npos)
+    {
+        inputText.erase(inputText.find_first_of(separators), 1);
+    }
+    return inputText;
+}
 
 int main()
 {
-   
+    cout << alphabet_position("The sunset sets at twelve o' clock.");
     return 0;
 }
