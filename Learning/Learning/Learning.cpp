@@ -815,8 +815,98 @@ string to_camel_case(string text)
     return inputText;
 }
 
+//Build tower
+vector <string> towerBuilder(unsigned nFloors)
+{
+    vector <string> result = {};
+    int symCount = 1;
+    char symbol = '*';
+    string floorTemp = "";
+    int symForReplace = 1;
+    string spaces = " ";
+
+    for (auto i = 1; i < nFloors; i++)
+    {
+        symCount += 2;
+    }
+
+    for (auto j = nFloors; j > 0; j--)
+    {
+        
+        for (auto k = 0; k < symCount; k++)
+        {
+            floorTemp.push_back(symbol);
+        }
+        if (j != nFloors)
+        {
+                floorTemp.replace(0, symForReplace, spaces);
+                floorTemp.replace(floorTemp.size() - symForReplace, symForReplace, spaces);
+                symForReplace++;
+                spaces += " ";
+                result.push_back(floorTemp);
+        }
+        else
+            result.push_back(floorTemp);
+        floorTemp = "";
+        /*for (auto n : result)
+        cout << n << endl;*/
+       
+    }
+    reverse(result.begin(), result.end());
+    /*for (auto n : result)
+        cout << n << endl;*/
+    return result;
+    
+}
+
+//Does my number look big in this?
+bool narcissistic(int value)
+{
+    int inputNum = value;
+    int currentDigit = 0;
+    int divider = 10;
+    int tempNum = 0;
+    size_t counterPow = 0;
+    int powDigit = 1;
+
+    while (inputNum > 0)
+    {
+        currentDigit = inputNum % divider;
+        inputNum = inputNum - currentDigit;
+        currentDigit = currentDigit / (divider / 10);
+        divider = divider * 10;
+        counterPow++;
+    }
+
+    inputNum = value;
+    currentDigit = 0;
+    divider = 10;
+
+    while (inputNum > 0)
+    {
+        currentDigit = inputNum % divider;
+        inputNum = inputNum - currentDigit;
+        currentDigit = currentDigit / (divider / 10);
+        for (auto i = 0; i < counterPow; i++)
+        {
+            powDigit *= currentDigit;
+        }
+        tempNum += powDigit;
+        divider = divider * 10;
+        powDigit = 1;
+    }
+    inputNum = value;
+
+    if (inputNum == tempNum)
+        return true;
+    else
+        return false;
+}
+
+//
+
 int main()
 {
-    cout << alphabet_position("The sunset sets at twelve o' clock.");
+    towerBuilder(10);
     return 0;
 }
