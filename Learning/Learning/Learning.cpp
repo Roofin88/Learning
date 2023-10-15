@@ -903,7 +903,90 @@ bool narcissistic(int value)
         return false;
 }
 
-//
+//Mexican Wave
+vector<string> wave(string y)
+{
+    vector <string> result = {};
+    string inputWord = y;
+    string resultWord = "";
+    for (size_t i = 0; i < inputWord.length(); i++)
+    {
+        resultWord = inputWord;
+
+        if (inputWord[i] == ' ')
+        {
+            resultWord[i + 1] = toupper(inputWord[i + 1]);
+            continue;
+        }
+        else
+        {
+            resultWord[i] = toupper(inputWord[i]);
+        }
+        result.push_back(resultWord);
+        resultWord = "";
+    }
+    for (auto n : result)
+        cout << n << endl;
+    return result;
+}
+
+//The Supermarket Queue
+long queueTime(vector<int> customers, int n)
+{
+    vector <int> inputSeq = customers;
+    int tills = n;
+    long maxTime = 0;
+    int minSum = 99999;
+    vector<int>times(tills);
+    size_t lastIndex = inputSeq.size() - 1;
+    size_t minSumIndex = 0;
+
+    if (inputSeq.size() < 1)
+        return maxTime;
+    for (auto i = 0; i < tills; i++)
+    {
+        times[i] = inputSeq[i];
+        if (minSum > times[i])
+        {
+            minSum = times[i];
+            minSumIndex = i;
+        }
+    }
+
+    if (lastIndex <= tills)
+    {
+        for (auto k = 0; k < inputSeq.size(); k++)
+        {
+            if (maxTime < inputSeq[k])
+                maxTime = inputSeq[k];
+        }
+    }
+    else
+    {
+        for (auto i = tills; i < inputSeq.size(); i++)
+        {
+            for (auto n = 0; n < tills; n++)
+            {
+                if (minSum > times[n])
+                {
+                    minSum = times[n];
+                    minSumIndex = n;
+                }
+            }
+            times[minSumIndex] += inputSeq[i];
+            minSum = 99999;
+            minSumIndex = 0;
+        }
+        for (auto i = 0; i < times.size(); i++)
+        {
+            if (maxTime < times[i])
+            {
+                maxTime = times[i];
+            }
+        }
+    }
+    return maxTime;
+}
 
 int main()
 {
