@@ -11,4 +11,18 @@ D:\Git\Learning\Learning\Learning\Learning.cpp(588,23): warning C4018: '<': sign
 D:\Git\Learning\Learning\Learning\Learning.cpp(610,23): warning C4018: '<': signed/unsigned mismatch
 D:\Git\Learning\Learning\Learning\Learning.cpp(708,24): warning C4018: '<': signed/unsigned mismatch
 D:\Git\Learning\Learning\Learning\Learning.cpp(828,24): warning C4018: '<': signed/unsigned mismatch
+D:\Git\Learning\Learning\Learning\Learning.cpp(890,28): warning C4018: '<': signed/unsigned mismatch
+D:\Git\Learning\Learning\Learning\Learning.cpp(956,19): warning C4018: '<=': signed/unsigned mismatch
+D:\Git\Learning\Learning\Learning\Learning.cpp(958,28): warning C4018: '<': signed/unsigned mismatch
+D:\Git\Learning\Learning\Learning\Learning.cpp(966,32): warning C4018: '<': signed/unsigned mismatch
+D:\Git\Learning\Learning\Learning\Learning.cpp(980,28): warning C4018: '<': signed/unsigned mismatch
+D:\Git\Learning\Learning\Learning\Learning.cpp(1011,38): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Git\Learning\Learning\Learning\Learning.cpp(1026,35): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Git\Learning\Learning\Learning\Learning.cpp(1042,25): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Git\Learning\Learning\Learning\Learning.cpp(1043,17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Git\Learning\Learning\Learning\Learning.cpp(1047,21): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Git\Learning\Learning\Learning\Learning.cpp(1054,40): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Git\Learning\Learning\Learning\Learning.cpp(1055,20): warning C4305: '+=': truncation from 'double' to 'float'
+D:\Git\Learning\Learning\Learning\Learning.cpp(1058,16): warning C4305: '-=': truncation from 'double' to 'float'
+D:\Git\Learning\Learning\Learning\Learning.cpp(1059,16): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
   Learning.vcxproj -> D:\Git\Learning\Learning\Debug\Learning.exe

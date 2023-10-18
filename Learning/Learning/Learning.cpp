@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <cinttypes>
 #include <cmath>
+#include <random>
 #include <numeric>
 
 
@@ -988,8 +989,132 @@ long queueTime(vector<int> customers, int n)
     return maxTime;
 }
 
+//Buying a car
+class BuyCar
+{
+
+public:
+    static std::vector<int> nbMonths(int startPriceOld, int startPriceNew, int savingperMonth, double percentLossByMonth);
+};
+
+vector <int> BuyCar::nbMonths(int startPriceOld, int startPriceNew, int savingperMonth, double percentLossByMonth)
+{
+    int monthCounter = 0;
+    double savings = 0;
+    double newPercent = percentLossByMonth / 100;
+    double newCarPrice = startPriceNew;
+    double oldCarPrice = startPriceOld;
+    double moneyCalc = 0;
+    int moneyRemaining = 0;
+
+    if (oldCarPrice >= newCarPrice)
+    {
+        moneyRemaining = oldCarPrice - newCarPrice;
+        return { monthCounter, moneyRemaining };
+    }
+    else
+    {
+        while (moneyRemaining <= 0)
+        {
+            if (monthCounter % 2)
+            {
+                newPercent += 0.005;
+            }
+            newCarPrice -= (newCarPrice * newPercent);
+            oldCarPrice -= (oldCarPrice * newPercent);
+            savings += savingperMonth;
+            moneyCalc = ((savings + oldCarPrice) - newCarPrice);
+            moneyRemaining = round(moneyCalc);
+            monthCounter++;
+            cout << "New Car Price = " << newCarPrice << endl;
+            cout << "Old Car Price = " << oldCarPrice << endl;
+            cout << "Savings = " << savings << endl;
+            cout << "Money Remaining = " << moneyRemaining << endl;
+            cout << "Month = " << monthCounter << endl;
+            cout << "New Percent = " << newPercent << endl;
+        }
+
+        return { monthCounter, moneyRemaining };
+    }
+}
+
+//ballUpwards
+int maxBall(int v0)
+{
+    float gravity = 9.81;
+    float height = 0;
+    float speed = v0 / 3.6;
+    float maxHeight = 0;
+    float maxTime = 0;
+
+    for (float time = 0.1; time > maxTime; time += 0.1)
+    {
+        maxHeight = height;
+        height = (speed * time) - (0.5 * gravity * time * time);
+        if (maxHeight > height)
+        {
+            maxTime = time - 0.1;
+            break;
+        }
+    }
+    return round(maxTime *= 10);
+}
+
+//Image host filename generator
+string generateName()
+{
+    string result = "";
+    string alphabet = "abcdefghijklmnopqrstuvwxyz";
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_int_distribution<> dis(0, 25);
+    for (auto i = 0; i < 6; i++)
+    {
+        result.push_back(alphabet[dis(gen)]);
+    }
+    return result;
+}
+
+//Mutual Recursion
+int F(int);
+int M(int);
+
+int F(int n) {
+    if (n == 0)
+        return 1;
+    else
+        return (n - M(F(n - 1)));
+}
+
+int M(int n) {
+    if (n == 0)
+        return 0;
+    else
+        return (n - F(M(n - 1)));
+}
+
+//Hamming Distance
+unsigned hamming(const std::string& a, const std::string& b)
+{
+    string firstWord = a;
+    string secondWord = b;
+    int counter = 0;
+    for (auto n = 0; n < firstWord.length(); n++)
+    {
+        if (firstWord[n] != secondWord[n])
+            counter++;
+    }
+    return counter;
+}
+
+//Sum of Two Integers
+int Add(int x, int y)
+{
+    return fma(1, x, y);
+}
+
 int main()
 {
-    towerBuilder(10);
+    cout<<maxBall(37);
     return 0;
 }
