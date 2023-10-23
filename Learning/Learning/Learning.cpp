@@ -5,6 +5,8 @@
 #include <algorithm>
 #include <cinttypes>
 #include <cmath>
+#include <sstream>
+#include <stdlib.h>
 #include <random>
 #include <numeric>
 
@@ -510,64 +512,6 @@ int digital_root(int n)
     }
     return digitalRoot;
 }
-
-//Duplicate_encoder !!!!!NOT FINISHED!!!!!!
-/*string duplicate_encoder(const string& word)
-{
-    string inputWord = word;
-    string resultWord = "";
-    size_t secondChar = 0;
-    size_t lastChar = 0;
-    size_t firstChar = 0;
-    char charForSearch = ' ';
-
-    transform(inputWord.begin(), inputWord.end(), inputWord.begin(),
-        [](unsigned char c) { return tolower(c); });
-
-    for (int i = 0; i < inputWord.length(); i++)
-    {
-        charForSearch = inputWord[i];
-        secondChar = inputWord.find(charForSearch, i + 1);
-        if (inputWord[i] == inputWord[secondChar])
-        {
-            inputWord[i] = ')';
-        }
-        else
-            inputWord[i] = '(';
-    }
-
-    for (int i = 0; i < inputWord.length(); i++)
-    {
-        firstChar = inputWord.find(inputWord[i]);
-        secondChar = inputWord.find(inputWord[i], i + 1);
-        if (firstChar != string::npos && secondChar != string::npos)
-        {
-            resultWord.push_back(')');
-        }
-
-        if (secondChar == inputWord.length() - 1)
-        {
-            lastChar = secondChar;
-        }
-        if (i == inputWord.length() - 1 && lastChar != 0)
-        {
-            resultWord.push_back(')');
-            break;
-        }
-        if (secondChar != string::npos)
-        {
-            resultWord.push_back(')');
-        }
-        else
-            resultWord.push_back('(');
-        cout << inputWord[i] << endl;
-        cout << secondChar << endl;
-        cout << resultWord << endl;
-        cout << lastChar << "\n\n";
-    }
-  
-    return inputWord;
-}*/
 
 //Find The Parity Outlier
 int FindOutlier(vector<int> arr)
@@ -1113,8 +1057,145 @@ int Add(int x, int y)
     return fma(1, x, y);
 }
 
+//Moving Zeros To The End
+vector<int> move_zeroes(const vector<int>& input) {
+    vector <int> inputSeq = input;
+    vector <int> zeroesSeq{};
+    vector <int> numsSeq{};
+    for (auto i = 0; i < inputSeq.size(); i++)
+    {
+        if (inputSeq[i] == 0)
+        {
+            zeroesSeq.push_back(0);
+        }
+        else
+        {
+            numsSeq.push_back(inputSeq[i]);
+        }
+    }
+    numsSeq.insert(numsSeq.end(), zeroesSeq.begin(), zeroesSeq.end());
+    return numsSeq;
+}
+
+//Simple Pig Latin
+string pig_it(string str)
+{
+    string inputText = str;
+    string separators{ "-_ !.,?" };
+    size_t startPos{ inputText.find_first_not_of(separators) };
+    while (startPos != string::npos)
+    {
+        size_t endPos = inputText.find_first_of(separators, startPos + 1);
+        if (endPos == string::npos)
+        {
+            endPos = inputText.length();
+
+            inputText.push_back(inputText[startPos]);
+            inputText.push_back('a');
+            inputText.push_back('y');
+            inputText.erase(startPos, 1);
+            break;
+        }
+        inputText[endPos] = inputText[startPos];
+        inputText.erase(startPos, 1);
+        inputText.insert(endPos, "ay ");
+        startPos = inputText.find_first_not_of(separators, endPos + 3);
+    }
+    return inputText;
+}
+
+//RGB To Hex Conversion
+string rgb_to_hex(int r, int g, int b)
+{
+    int red = r;
+    int green = g;
+    int blue = b;
+
+    stringstream ss;
+    if (red == 0 && green == 0 && blue == 0)
+        return "000000";
+   
+    if (red < 0 || green < 0 || blue << 0)
+    {
+        red *= (-1);
+        green *= (-1);
+        blue *= (-1);
+    }
+    else if (red > 255 || green > 255 || blue > 255)
+    {
+        red = 255;
+        green = 255;
+        blue = 255;
+    }
+    else if (red < 9)
+        ss << hex << "0" << r << g << b;
+    else if (green < 9)
+        ss << hex << r << "0" << g << b;
+    else if (blue < 9)
+        ss << hex << r << g << "0" << b;
+    else if (red < 9 && green < 9)
+        ss << hex << "0" << r << "0" << g << b;
+    else if (blue < 9 && green < 9)
+        ss << hex << r << "0" << g << "0" << b;
+    else if (red < 9 && green < 9 && blue < 9)
+        ss << hex << "0" << r << "0" << g << "0" << b;
+    
+
+    else
+        ss << hex << r << g << b; 
+    string res(ss.str());
+    transform(res.begin(), res.end(), res.begin(), ::toupper);
+
+    cout << res;
+    return "";
+    /*char hexBufferR[20];
+    _itoa_s(r, hexBufferR, 16);
+    char hexBufferG[20];
+    _itoa_s(g, hexBufferG, 16);
+    char hexBufferB[20];
+    _itoa_s(b, hexBufferB, 16);
+    string result{};
+    result.append(hexBufferR);
+    result.append(hexBufferG);
+    result.append(hexBufferB);
+    return result;
+    */
+}
+
+//Duplicate Encoder
+string duplicate_encoder(const string& word)
+{
+    string inputWord = word;
+    string resultWord = "";
+    char tempChar = '\0';
+    size_t counter = 0;
+
+    for (auto n = 0; n < inputWord.length(); n++)
+    {
+        inputWord[n] = tolower(inputWord[n]);
+    }
+
+    for (auto i = 0; i < inputWord.length(); i++)
+    {
+        tempChar = inputWord[i];
+        for (auto n = 0; n < inputWord.length(); n++)
+        {
+            if (inputWord[n] == tempChar)
+                counter++;
+        }
+        if (counter > 1)
+            resultWord.push_back(')');
+        else if (counter == 1)
+            resultWord.push_back('(');
+        counter = 0;
+    }
+    return resultWord;
+}
+   
+
+
 int main()
 {
-    cout<<maxBall(37);
+    cout << duplicate_encoder("(( @");
     return 0;
 }

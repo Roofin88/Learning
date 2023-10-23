@@ -1,28 +1,34 @@
 ﻿  Learning.cpp
-D:\Git\Learning\Learning\Learning\Learning.cpp(57,23): warning C4018: '<': signed/unsigned mismatch
-D:\Git\Learning\Learning\Learning\Learning.cpp(97,27): warning C4018: '<': signed/unsigned mismatch
-D:\Git\Learning\Learning\Learning\Learning.cpp(224,42): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-D:\Git\Learning\Learning\Learning\Learning.cpp(279,23): warning C4018: '<': signed/unsigned mismatch
-D:\Git\Learning\Learning\Learning\Learning.cpp(367,23): warning C4018: '<': signed/unsigned mismatch
-D:\Git\Learning\Learning\Learning\Learning.cpp(377,17): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
-D:\Git\Learning\Learning\Learning\Learning.cpp(449,23): warning C4018: '<': signed/unsigned mismatch
-D:\Git\Learning\Learning\Learning\Learning.cpp(578,23): warning C4018: '<': signed/unsigned mismatch
-D:\Git\Learning\Learning\Learning\Learning.cpp(588,23): warning C4018: '<': signed/unsigned mismatch
-D:\Git\Learning\Learning\Learning\Learning.cpp(610,23): warning C4018: '<': signed/unsigned mismatch
-D:\Git\Learning\Learning\Learning\Learning.cpp(708,24): warning C4018: '<': signed/unsigned mismatch
-D:\Git\Learning\Learning\Learning\Learning.cpp(828,24): warning C4018: '<': signed/unsigned mismatch
-D:\Git\Learning\Learning\Learning\Learning.cpp(890,28): warning C4018: '<': signed/unsigned mismatch
-D:\Git\Learning\Learning\Learning\Learning.cpp(956,19): warning C4018: '<=': signed/unsigned mismatch
-D:\Git\Learning\Learning\Learning\Learning.cpp(958,28): warning C4018: '<': signed/unsigned mismatch
-D:\Git\Learning\Learning\Learning\Learning.cpp(966,32): warning C4018: '<': signed/unsigned mismatch
-D:\Git\Learning\Learning\Learning\Learning.cpp(980,28): warning C4018: '<': signed/unsigned mismatch
-D:\Git\Learning\Learning\Learning\Learning.cpp(1011,38): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-D:\Git\Learning\Learning\Learning\Learning.cpp(1026,35): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-D:\Git\Learning\Learning\Learning\Learning.cpp(1042,25): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\Git\Learning\Learning\Learning\Learning.cpp(1043,17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-D:\Git\Learning\Learning\Learning\Learning.cpp(1047,21): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\Git\Learning\Learning\Learning\Learning.cpp(1054,40): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\Git\Learning\Learning\Learning\Learning.cpp(1055,20): warning C4305: '+=': truncation from 'double' to 'float'
-D:\Git\Learning\Learning\Learning\Learning.cpp(1058,16): warning C4305: '-=': truncation from 'double' to 'float'
-D:\Git\Learning\Learning\Learning\Learning.cpp(1059,16): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+D:\Git\Learning\Learning\Learning\Learning.cpp(60,23): warning C4018: '<': signed/unsigned mismatch
+D:\Git\Learning\Learning\Learning\Learning.cpp(100,27): warning C4018: '<': signed/unsigned mismatch
+D:\Git\Learning\Learning\Learning\Learning.cpp(227,42): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Git\Learning\Learning\Learning\Learning.cpp(282,23): warning C4018: '<': signed/unsigned mismatch
+D:\Git\Learning\Learning\Learning\Learning.cpp(370,23): warning C4018: '<': signed/unsigned mismatch
+D:\Git\Learning\Learning\Learning\Learning.cpp(380,17): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+D:\Git\Learning\Learning\Learning\Learning.cpp(452,23): warning C4018: '<': signed/unsigned mismatch
+D:\Git\Learning\Learning\Learning\Learning.cpp(523,23): warning C4018: '<': signed/unsigned mismatch
+D:\Git\Learning\Learning\Learning\Learning.cpp(533,23): warning C4018: '<': signed/unsigned mismatch
+D:\Git\Learning\Learning\Learning\Learning.cpp(555,23): warning C4018: '<': signed/unsigned mismatch
+D:\Git\Learning\Learning\Learning\Learning.cpp(653,24): warning C4018: '<': signed/unsigned mismatch
+D:\Git\Learning\Learning\Learning\Learning.cpp(773,24): warning C4018: '<': signed/unsigned mismatch
+D:\Git\Learning\Learning\Learning\Learning.cpp(835,28): warning C4018: '<': signed/unsigned mismatch
+D:\Git\Learning\Learning\Learning\Learning.cpp(901,19): warning C4018: '<=': signed/unsigned mismatch
+D:\Git\Learning\Learning\Learning\Learning.cpp(903,28): warning C4018: '<': signed/unsigned mismatch
+D:\Git\Learning\Learning\Learning\Learning.cpp(911,32): warning C4018: '<': signed/unsigned mismatch
+D:\Git\Learning\Learning\Learning\Learning.cpp(925,28): warning C4018: '<': signed/unsigned mismatch
+D:\Git\Learning\Learning\Learning\Learning.cpp(956,38): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Git\Learning\Learning\Learning\Learning.cpp(971,35): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Git\Learning\Learning\Learning\Learning.cpp(988,25): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Git\Learning\Learning\Learning\Learning.cpp(990,17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Git\Learning\Learning\Learning\Learning.cpp(994,5): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Git\Learning\Learning\Learning\Learning.cpp(994,55): warning C4305: '+=': truncation from 'double' to 'float'
+D:\Git\Learning\Learning\Learning\Learning.cpp(997,33): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Git\Learning\Learning\Learning\Learning.cpp(1000,28): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Git\Learning\Learning\Learning\Learning.cpp(1004,17): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+D:\Git\Learning\Learning\Learning\Learning.cpp(1046,24): warning C4018: '<': signed/unsigned mismatch
+D:\Git\Learning\Learning\Learning\Learning.cpp(1057,15): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+D:\Git\Learning\Learning\Learning\Learning.cpp(1065,24): warning C4018: '<': signed/unsigned mismatch
+D:\Git\Learning\Learning\Learning\Learning.cpp(1172,24): warning C4018: '<': signed/unsigned mismatch
+D:\Git\Learning\Learning\Learning\Learning.cpp(1177,24): warning C4018: '<': signed/unsigned mismatch
+D:\Git\Learning\Learning\Learning\Learning.cpp(1180,28): warning C4018: '<': signed/unsigned mismatch
   Learning.vcxproj -> D:\Git\Learning\Learning\Debug\Learning.exe
