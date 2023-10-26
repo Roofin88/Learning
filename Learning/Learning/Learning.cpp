@@ -541,109 +541,6 @@ int FindOutlier(vector<int> arr)
     return result;
 }
 
-//Replace With Alphabet Position !!!!NOT FINISHED!!!!
-string alphabet_position(const string& text)
-{
-    string inputText = text;
-    string resultSeq = "";
-    transform(inputText.begin(), inputText.end(), inputText.begin(),
-        [](unsigned char c) { return std::tolower(c); });
-    
-    inputText.erase(remove(inputText.begin(), inputText.end(), ' '), inputText.end());
-    inputText.erase(remove(inputText.begin(), inputText.end(), '\''), inputText.end());
-    
-    for (int i = 0; i < inputText.length(); i++)
-    {
-        switch (inputText[i])
-        {
-        case 'a':
-            resultSeq.append(" 1");
-            break;
-        case 'b':
-            resultSeq.append(" 2");
-            break;
-        case 'c':
-            resultSeq.append(" 3");
-            break;
-        case 'd':
-            resultSeq.append(" 4");
-            break;
-        case 'e':
-            resultSeq.append(" 5");
-            break;
-        case 'f':
-            resultSeq.append(" 6");
-            break;
-        case 'g':
-            resultSeq.append(" 7");
-            break;
-        case 'h':
-            resultSeq.append(" 8");
-            break;
-        case 'i':
-            resultSeq.append(" 9");
-            break;
-        case 'j':
-            resultSeq.append(" 10");
-            break;
-        case 'k':
-            resultSeq.append(" 11");
-            break;
-        case 'l':
-            resultSeq.append(" 12");
-            break;
-        case 'm':
-            resultSeq.append(" 13");
-            break;
-        case 'n':
-            resultSeq.append(" 14");
-            break;
-        case 'o':
-            resultSeq.append(" 15");
-            break;
-        case 'p':
-            resultSeq.append(" 16");
-            break;
-        case 'q':
-            resultSeq.append(" 17");
-            break;
-        case 'r':
-            resultSeq.append(" 18");
-            break;
-        case 's':
-            resultSeq.append(" 19");
-            break;
-        case 't':
-            resultSeq.append(" 20");
-            break;
-        case 'u':
-            resultSeq.append(" 21");
-            break;
-        case 'v':
-            resultSeq.append(" 22");
-            break;
-        case 'w':
-            resultSeq.append(" 23");
-            break;
-        case 'x':
-            resultSeq.append(" 24");
-            break;
-        case 'y':
-            resultSeq.append(" 25");
-            break;
-        case 'z':
-            resultSeq.append(" 26");
-            break;
- 
-        }
-    }
-    auto start = resultSeq.find_first_not_of(' ');
-    auto end = resultSeq.find_last_not_of(' ');
-    string trimmedString = "";
-    trimmedString = resultSeq.substr(start, (end - start) + 1);
-    return trimmedString;
-}
-
 //Take a Ten Minutes Walk
 bool isValidWalk(vector<char> walk)
 {
@@ -1077,91 +974,6 @@ vector<int> move_zeroes(const vector<int>& input) {
     return numsSeq;
 }
 
-//Simple Pig Latin
-string pig_it(string str)
-{
-    string inputText = str;
-    string separators{ "-_ !.,?" };
-    size_t startPos{ inputText.find_first_not_of(separators) };
-    while (startPos != string::npos)
-    {
-        size_t endPos = inputText.find_first_of(separators, startPos + 1);
-        if (endPos == string::npos)
-        {
-            endPos = inputText.length();
-
-            inputText.push_back(inputText[startPos]);
-            inputText.push_back('a');
-            inputText.push_back('y');
-            inputText.erase(startPos, 1);
-            break;
-        }
-        inputText[endPos] = inputText[startPos];
-        inputText.erase(startPos, 1);
-        inputText.insert(endPos, "ay ");
-        startPos = inputText.find_first_not_of(separators, endPos + 3);
-    }
-    return inputText;
-}
-
-//RGB To Hex Conversion
-string rgb_to_hex(int r, int g, int b)
-{
-    int red = r;
-    int green = g;
-    int blue = b;
-
-    stringstream ss;
-    if (red == 0 && green == 0 && blue == 0)
-        return "000000";
-   
-    if (red < 0 || green < 0 || blue << 0)
-    {
-        red *= (-1);
-        green *= (-1);
-        blue *= (-1);
-    }
-    else if (red > 255 || green > 255 || blue > 255)
-    {
-        red = 255;
-        green = 255;
-        blue = 255;
-    }
-    else if (red < 9)
-        ss << hex << "0" << r << g << b;
-    else if (green < 9)
-        ss << hex << r << "0" << g << b;
-    else if (blue < 9)
-        ss << hex << r << g << "0" << b;
-    else if (red < 9 && green < 9)
-        ss << hex << "0" << r << "0" << g << b;
-    else if (blue < 9 && green < 9)
-        ss << hex << r << "0" << g << "0" << b;
-    else if (red < 9 && green < 9 && blue < 9)
-        ss << hex << "0" << r << "0" << g << "0" << b;
-    
-
-    else
-        ss << hex << r << g << b; 
-    string res(ss.str());
-    transform(res.begin(), res.end(), res.begin(), ::toupper);
-
-    cout << res;
-    return "";
-    /*char hexBufferR[20];
-    _itoa_s(r, hexBufferR, 16);
-    char hexBufferG[20];
-    _itoa_s(g, hexBufferG, 16);
-    char hexBufferB[20];
-    _itoa_s(b, hexBufferB, 16);
-    string result{};
-    result.append(hexBufferR);
-    result.append(hexBufferG);
-    result.append(hexBufferB);
-    return result;
-    */
-}
-
 //Duplicate Encoder
 string duplicate_encoder(const string& word)
 {
@@ -1191,11 +1003,136 @@ string duplicate_encoder(const string& word)
     }
     return resultWord;
 }
-   
+
+//Replace With Alphabet Position
+string alphabet_position(const string& text)
+{
+    string inputText = text;
+    string resultSeq = "";
+    char currentChar = '\0';
+    int charCode = 0;
+
+    for (auto n = 0; n < inputText.length(); n++)
+    {
+        inputText[n] = tolower(inputText[n]);
+    }
+
+    string alphabet = { "abcdefghijklmnopqrstuvwxyz" };
+
+    for (auto n = 0; n < inputText.length(); n++)
+    {
+        currentChar = inputText[n];
+        for (int k = 0; k < alphabet.length(); k++)
+        {
+            if (currentChar == alphabet[k])
+            {
+                charCode = k + 1;
+                resultSeq.append(to_string(charCode));
+                resultSeq.push_back(' ');
+            }
+        }
+    }
+    if (resultSeq.length() != 0)
+        resultSeq.erase((resultSeq.length() - 1), 1);
+    return resultSeq;
+}
+
+//Unique In Order
+template <typename T> vector<T> uniqueInOrder(const vector<T>& iterable)
+{
+    vector <T> resultSeq = {};
+    T currentChar;
+    T nextChar;
+    T lastChar;
+    for (auto n = 0; n < iterable.size(); n++)
+    {
+        currentChar = iterable[n];
+        if (n != (iterable.size() - 1))
+            nextChar = iterable[n + 1];
+        if (currentChar != nextChar)
+            resultSeq.push_back(currentChar);
+        if (n == (iterable.size() - 1) && currentChar == nextChar)
+            resultSeq.push_back(currentChar);
+        lastChar = currentChar;
+    }
+    return resultSeq;
+}
+vector<char> uniqueInOrder(const string& iterable)
+{
+    vector <char> resultSeq = {};
+    for (auto n = 0; n < iterable.length(); n++)
+    {
+        auto currentChar = iterable[n];
+        auto nextChar = iterable[n + 1];
+        if (currentChar != nextChar)
+            resultSeq.push_back(currentChar);
+    }
+    return resultSeq;
+}
+
+//Rot13
+string rot13(string msg)
+{
+    string inputMsg = msg;
+    string resultMsg = "";
+    int charCode = 0;
+    char tempChar = '\0';
+    for (auto i = 0; i < inputMsg.length(); i++)
+    {
+        charCode = inputMsg[i];
+
+        if (charCode >= 'a' && charCode <= 'z')
+        {
+            if (('z' - charCode) < 13)
+            {
+                charCode = 'a' + (12 - ('z' - charCode));
+            }
+            else if (('z' - charCode) >= 13)
+                charCode += 13;
+        }
+        else if (charCode >= 'A' && charCode <= 'Z')
+        {
+            if (('Z' - charCode) < 13)
+            {
+                charCode = 'A' + (12 - ('Z' - charCode));
+            }
+            else if (('Z' - charCode) >= 13)
+                charCode += 13;
+        }
+        tempChar = charCode;
+        resultMsg.push_back(tempChar);
+    }
+    return resultMsg;
+}
+
+//Maximum subarray sum
+int maxSequence(const vector<int>& arr)
+{
+    vector<int> inputSeq = arr;
+    int maxSum = 0;
+    int tempSum = 0;
+
+    if (inputSeq.empty())
+        return 0;
+    else
+    {
+        for (auto n = 0; n < inputSeq.size(); n++)
+        {
+            tempSum = 0;
+            for (auto k = n; k < inputSeq.size(); k++)
+            {
+                tempSum += inputSeq[k];
+                if (maxSum < tempSum)
+                    maxSum = tempSum;
+            }
+        }
+        return maxSum;
+    }
+}
 
 
 int main()
 {
-    cout << duplicate_encoder("(( @");
+    cout << alphabet_position("The sunset sets at twelve o' clock.");
     return 0;
 }
