@@ -4,6 +4,7 @@
 #include <string>
 #include <algorithm>
 #include <cinttypes>
+#include <map>
 #include <cmath>
 #include <sstream>
 #include <stdlib.h>
@@ -1130,7 +1131,57 @@ int maxSequence(const vector<int>& arr)
     }
 }
 
+//Scramble
+bool scramble(const string& s1, const string& s2)
+{
+    string ref = s2;
+    string input = s1;
+    string result = "";
+    char tempLetter = '\0';
 
+    sort(ref.begin(), ref.end());
+    sort(input.begin(), input.end());
+
+    map<char, int> letters;
+
+    for (auto n = 0; n < input.length(); n++)
+    {
+        tempLetter = input[n];
+        map<char, int> ::iterator it = letters.find(tempLetter);
+        if (it == letters.end())
+        {
+            letters.insert(make_pair(tempLetter, 0));
+            letters.at(tempLetter) = 1;
+        }
+        else
+        {
+            letters.at(tempLetter) += 1;
+        }
+    }
+    for (auto i = 0; i < ref.length(); i++)
+    {
+        tempLetter = ref[i];
+        map<char, int> ::iterator it = letters.find(tempLetter);
+        if (it != letters.end() && letters.at(tempLetter) >= 0)
+        {
+            letters.at(tempLetter) -= 1;
+            if (letters.at(tempLetter) < 0)
+                return false;
+            result.push_back(tempLetter);
+        }
+    }
+    if (result != ref)
+        return false;
+    else
+        return true;
+}
+
+//Scramble better solution
+bool scramble(string s1, string s2) {
+    sort(begin(s1), end(s1));
+    sort(begin(s2), end(s2));
+    return includes(begin(s1), end(s1), begin(s2), end(s2));
+}
 int main()
 {
     cout << alphabet_position("The sunset sets at twelve o' clock.");
