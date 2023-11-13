@@ -1182,6 +1182,153 @@ bool scramble(string s1, string s2) {
     sort(begin(s2), end(s2));
     return includes(begin(s1), end(s1), begin(s2), end(s2));
 }
+
+//Greed is Good
+int score(const vector<int>& dice)
+{
+    vector <int> input = dice;
+    int tempPoint = 0;
+    int pointSum = 0;
+    int pointMult = 100;
+
+    map <int, int> dies;
+
+    for (auto n = 0; n < input.size(); n++)
+    {
+        tempPoint = input[n];
+        map<int, int>::iterator iter = dies.find(tempPoint);
+        if (iter == dies.end())
+        {
+            dies.insert(make_pair(input[n], 0));
+            dies.at(tempPoint) = 1;
+        }
+        else
+            dies.at(tempPoint)++;
+    }
+
+    map<int, int>::iterator iter = dies.begin();
+    while (iter != dies.end())
+    {
+        if (iter->second > 3)
+        {
+            if (iter->second - 3 == 1)
+            {
+                if (iter->first == 1)
+                    pointSum += pointMult;
+                else if (iter->first == 5)
+                    pointSum += pointMult / 2;
+            }
+            iter->second = 3;
+        }
+        if (iter->second == 1)
+        {
+            if (iter->first == 1)
+                pointSum += pointMult;
+            else if (iter->first == 5)
+                pointSum += pointMult / 2;
+        }
+        else if (iter->second == 2)
+        {
+            if (iter->first == 1)
+                pointSum += pointMult * 2;
+            else if (iter->first == 5)
+                pointSum += pointMult;
+        }
+        else if (iter->second == 3)
+        {
+            switch (iter->first)
+            {
+            case 1:
+                pointSum += pointMult * 10;
+                break;
+            case 2:
+                pointSum += (pointMult * 2);
+                break;
+            case 3:
+                pointSum += (pointMult * 3);
+                break;
+            case 4:
+                pointSum += (pointMult * 4);
+                break;
+            case 5:
+                pointSum += (pointMult * 5);
+                break;
+            case 6:
+                pointSum += (pointMult * 6);
+                break;
+            default:
+                break;
+            }
+        }
+
+        iter++;
+    }
+    return pointSum;
+}
+
+//Beeramid
+int beeramid(int bonus, double price)
+{
+    int cansTotal = 0;
+    int level = 1;
+    int summator = 0;
+
+    cout << bonus << endl;
+    cout << price << endl;
+    if (bonus < price)
+        return 0;
+    else
+    {
+        cansTotal = bonus / price;
+        while (cansTotal >= summator)
+        {
+            while (cansTotal >= summator)
+            {
+                summator = level * level;
+                cansTotal -= summator;
+                if (cansTotal > summator)
+                    level++;
+                else if (cansTotal == 0)
+                    return level;
+                else if (cansTotal < 0)
+                {
+                    level--;
+                    break;
+                }
+                else
+                    return level;
+            }
+        }
+        return level;
+    }
+}
+
+//(Ready for) Prime Time
+vector<unsigned> prime(unsigned n)
+{
+    unsigned maxNum = n;
+    vector <unsigned> result = {};
+    for (auto k = 2; k <= maxNum; k++)
+    {
+        auto i = 2;
+        auto j = 0;
+        while (i * i <= k && j != 1)
+        {
+            if (k % i == 0)
+            {
+                j = 1;
+                i = i + 1;
+            }
+            else
+                i = i + 1;
+        }
+        if (j != 1)
+            result.push_back(k);
+        i = 2;
+        j = 0;
+    }
+    return result;
+}
 int main()
 {
     cout << alphabet_position("The sunset sets at twelve o' clock.");
